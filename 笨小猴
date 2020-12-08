@@ -1,0 +1,33 @@
+//笨小猴
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+int prime(int a)
+{
+	int i=1;
+	for(i=2;i<=a/2;i++){
+		if(a%i==0)return 0;
+	}
+}
+int main()
+{
+	int i,len,sum[26]={0};
+	int maxn=-1,minn=110,x;
+	char a[120];
+	scanf("%s",a);
+	len=strlen(a);
+	for(i=0;i<len;i++)
+	{
+		sum[a[i]-'a']++;
+	}
+	for(i=0;i<26;i++)
+	{
+		if(sum[i]>maxn) 
+			maxn=sum[i];
+		if(sum[i]<minn && sum[i]>0)
+			minn=sum[i];
+	}
+	if(prime(maxn-minn))printf("Lucky Word\n%d",maxn-minn);
+	else printf("No Answer\n0");
+	return 0;
+}
